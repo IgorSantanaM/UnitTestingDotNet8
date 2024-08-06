@@ -24,5 +24,21 @@ namespace EmployeeManagement.Test
             // 
 
         }
+        [Fact]
+        public void CreateEmployee_IsExternalistrue_ReturnTypeMustBeExternal()
+        {
+            //Arrange
+            var factory = new EmployeeFactory();
+
+            //Act
+            var employee = factory.CreateEmployee("Kevin", "Dockx", "Marvin", true);
+
+            //Assert
+            Assert.IsType<ExternalEmployee>(employee);
+            //Assert.IsAssignableFrom<Employee>(employee);
+
+            // Not recommended to test private methods, but if wanted its a good practice to test the methods that implements a smal behavior of the private method so you can test it
+
+        }
     }
 }
