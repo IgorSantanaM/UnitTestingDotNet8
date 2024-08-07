@@ -3,6 +3,7 @@ using EmployeeManagement.Business.EventArguments;
 using EmployeeManagement.Business.Exceptions;
 using EmployeeManagement.DataAccess.Entities;
 using EmployeeManagement.Services.Test;
+using EmployeeManagement.Test.Fixtures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,23 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Test
 {
-    public class EmployeeServicesTest
+    public class EmployeeServicesTest : IClassFixture<EmployeeServiceFixture>
     {
+
+        // Class fi
+        private readonly EmployeeServiceFixture _fixture;
+
+        public EmployeeServicesTest(EmployeeServiceFixture fixture) 
+            {
+            _fixture = fixture;
+            }
+        [Fact]
         public void CreateInternalEmployee_InternalEmployeeCreated_AttendedCoursesMustNotBeNew()
         {
             // Arrange - set up
-            var emmployeeManagementTestDataRepository = new EmployeeManagementTestDataRepository();
-            var employeeService = new EmployeeService(emmployeeManagementTestDataRepository, new EmployeeFactory());
 
             // Act - what the test must
-            var internalEmployee = employeeService.CreateInternalEmployee("Igor", "Santana");
+            var internalEmployee = _fixture.EmployeeService.CreateInternalEmployee("Igor", "Santana");
 
             //Assert - verify if the test is true
             Assert.All(internalEmployee.AttendedCourses, course => Assert.False(course.IsNew));
