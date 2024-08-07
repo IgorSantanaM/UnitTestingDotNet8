@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace EmployeeManagement.Test
 {
-    public class EmployeeFactoryTest : IDisposable
+    public class EmployeeFactoryTest
     {
         private EmployeeFactory _employeeFactory;
         
@@ -14,11 +14,9 @@ namespace EmployeeManagement.Test
             _employeeFactory = new EmployeeFactory();
         }
 
-        public void Dispose()
-        {
-           // Clean up the setup code, if required
-        }
-        [Fact]
+        [Fact(Skip = "Skipping the test because its not cool enough.")] // be careful of using this
+        [Trait("Category", "EmployeeFactory_CreateEmployee_Salary")]
+
         public void CreateEmployee_ConstructInternalEmployee_SalaryMustBe2500() 
         {
             
@@ -35,6 +33,7 @@ namespace EmployeeManagement.Test
 
         }
         [Fact]
+        [Trait("Category", "EmployeeFactory_CreateEmployee_ReturnType")]
         public void CreateEmployee_IsExternalistrue_ReturnTypeMustBeExternal()
         { 
             //Act

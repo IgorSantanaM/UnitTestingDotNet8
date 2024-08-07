@@ -11,20 +11,23 @@ namespace EmployeeManagement.Test.Fixtures
 {
     public class EmployeeServiceFixture : IDisposable
     {
-        // readonly
-        public IEmployeeManagementRepository EmployeeManagementRepository { get;}
+        public IEmployeeManagementRepository EmployeeManagementTestDataRepository
+        { get; }
+        public EmployeeService EmployeeService
+        { get; }
 
-        // readonly
-        public EmployeeService EmployeeService { get;}
-        public EmployeeServiceFixture() 
+        public EmployeeServiceFixture()
         {
-            var emmployeeManagementTestDataRepository = new EmployeeManagementTestDataRepository();
-            var employeeService = new EmployeeService(emmployeeManagementTestDataRepository, new EmployeeFactory());
+            EmployeeManagementTestDataRepository =
+                new EmployeeManagementTestDataRepository();
+            EmployeeService = new EmployeeService(
+                EmployeeManagementTestDataRepository,
+                new EmployeeFactory());
         }
 
         public void Dispose()
         {
-            // cleanup the setup code, if required
+            // clean up the setup code, if required
         }
     }
 }
