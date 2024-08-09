@@ -38,6 +38,7 @@ namespace EmployeeManagement.Test
             var employeeManagementTestDataRepository =
               new EmployeeManagementTestDataRepository();
             var employeeFactoryMock = new Mock<EmployeeFactory>();
+            // starts with Kevin
             employeeFactoryMock.Setup(m =>
                 m.CreateEmployee(
                     "Kevin",
@@ -45,7 +46,7 @@ namespace EmployeeManagement.Test
                     null,
                     false))
                 .Returns(new InternalEmployee("Kevin", "Dockx", 5, 2500, false, 1));
-
+            // starts with Sandy
             employeeFactoryMock.Setup(m =>
              m.CreateEmployee(
                  "Sandy",
@@ -53,7 +54,7 @@ namespace EmployeeManagement.Test
                  null,
                  false))
              .Returns(new InternalEmployee("Sandy", "Dockx", 0, 3000, false, 1));
-
+            // any that has a
             employeeFactoryMock.Setup(m =>
              m.CreateEmployee(
                  It.Is<string>(value => value.Contains("a")),
@@ -106,6 +107,8 @@ namespace EmployeeManagement.Test
             // Assert  
             Assert.Equal(400, employee.SuggestedBonus);
         }
+
+        // Mocking Async code 
 
         [Fact]
         public async Task FetchInternalEmployee_EmployeeFetched_SuggestedBonusMustBeCalculated_MoqInterface_Async()
