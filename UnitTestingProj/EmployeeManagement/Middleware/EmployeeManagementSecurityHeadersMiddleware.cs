@@ -8,8 +8,6 @@
         {
             _next = next;
         }
-
-
         public async Task InvokeAsync(HttpContext context)
         {
             IHeaderDictionary headers = context.Response.Headers;
