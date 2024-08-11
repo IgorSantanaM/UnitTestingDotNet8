@@ -49,8 +49,16 @@ namespace EmployeeManagement.Controllers
             [FromRoute(Name = "id")] Guid? employeeId)
         {
             if (!employeeId.HasValue)
-            {                 
-                return RedirectToAction("Index", "EmployeeOverview"); 
+            {
+                if (Guid.TryParse(TempData["EmployeeId"]?.ToString(),
+                    out Guid employeeIdFromTempData))
+                {
+                    employeeId = employeeIdFromTempData;
+                }
+                else
+                {
+                    return RedirectToAction("Index", "EmployeeOverview");
+                }
             }
 
             var internalEmployee = await _employeeService.FetchInternalEmployeeAsync(employeeId.Value); 
