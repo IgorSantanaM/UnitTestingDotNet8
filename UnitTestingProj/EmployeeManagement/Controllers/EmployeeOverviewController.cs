@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EmployeeManagement.Business;
 using EmployeeManagement.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -40,7 +41,19 @@ namespace EmployeeManagement.Controllers
 
             return View(new EmployeeOverviewViewModel(internalEmployeeForOverviewViewModels));
         }
-         
+
+
+        [Authorize]
+        public IActionResult ProtectedIndex()
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("AdminIndex", "EmployeeManagement");
+            }
+
+            return RedirectToAction("Index", "EmployeeManagement");
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

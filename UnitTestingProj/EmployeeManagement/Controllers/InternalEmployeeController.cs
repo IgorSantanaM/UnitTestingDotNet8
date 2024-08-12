@@ -50,7 +50,12 @@ namespace EmployeeManagement.Controllers
         {
             if (!employeeId.HasValue)
             {
-                if (Guid.TryParse(TempData["EmployeeId"]?.ToString(),
+                if (Guid.TryParse(HttpContext?.Session?.GetString("EmployeeId"),
+                    out Guid employeeIdFromSession))
+                {
+                    employeeId = employeeIdFromSession;
+                }
+                else if (Guid.TryParse(TempData["EmployeeId"]?.ToString(),
                     out Guid employeeIdFromTempData))
                 {
                     employeeId = employeeIdFromTempData;

@@ -1,10 +1,6 @@
 ﻿using EmployeeManagement.Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace EmployeeManagement.Test.HttpMessageHandlers
 {
@@ -24,7 +20,8 @@ namespace EmployeeManagement.Test.HttpMessageHandlers
             };
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
             {
-                Content = new StringContent(
+                
+               Content  = new StringContent(
                     JsonSerializer.Serialize(promotionEligibility, new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
