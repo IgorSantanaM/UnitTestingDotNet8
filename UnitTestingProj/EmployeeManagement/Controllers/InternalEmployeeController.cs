@@ -8,13 +8,15 @@ namespace EmployeeManagement.Controllers
     public class InternalEmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
-        private readonly IMapper _mapper; 
+        private readonly IMapper _mapper;
+        private readonly IPromotionService _promotionService;
 
         public InternalEmployeeController(IEmployeeService employeeService,
-            IMapper mapper)
+            IMapper mapper, IPromotionService promotionService)
         {
             _employeeService = employeeService;
             _mapper = mapper;
+            _promotionService = promotionService;
         }
 
         [HttpGet]

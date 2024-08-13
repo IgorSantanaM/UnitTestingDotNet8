@@ -180,7 +180,7 @@ namespace EmployeeManagement.Test
                              PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                          }),
                      Encoding.ASCII,
-                     "application/json")
+                     "application/json"),
                 });
 
             var httpClient = new HttpClient(eligibleForPromotionHandlerMock.Object);
