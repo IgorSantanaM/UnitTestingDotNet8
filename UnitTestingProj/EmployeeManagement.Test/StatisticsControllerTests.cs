@@ -1,5 +1,5 @@
 ﻿
-AutoMapper;
+using AutoMapper;
 using EmployeeManagement.Controllers;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Http;
