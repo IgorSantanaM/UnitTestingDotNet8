@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿        using AutoMapper;
 using EmployeeManagement.ActionFilters;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Http.Features;
@@ -14,7 +14,7 @@ namespace EmployeeManagement.Controllers
         {
             _mapper = mapper;
         }
-
+        [CheckShowStatisticsHeader]
         public IActionResult Index()
         {
             var httpConnectionFeature = HttpContext.Features.Get<IHttpConnectionFeature>();
