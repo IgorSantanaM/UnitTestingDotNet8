@@ -46,7 +46,18 @@ namespace EmployeeManagement.Test
             // Not recommended to test private methods, but if wanted its a good practice to test the methods that implements a smal behavior of the private method so you can test it
 
         }
-
+        [Fact]
+        public void SlowTest1()
+        {
+            Thread.Sleep(5000);
+            Assert.True(true);
+        }
+        [Fact]
+        public void SlowTest2()
+        {
+            Thread.Sleep(5000);
+            Assert.True(true);
+        }
 
     }
 }
